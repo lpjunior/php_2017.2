@@ -1,11 +1,3 @@
-<!DOCTYPE html>
-<html lang="pt_BR">
-    <head>
-        <title>Aula 03</title>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-
         <style>
             * {
                 box-sizing: border-box;
@@ -42,14 +34,7 @@
                 background-color: #f1f1f1;
             }
         </style>
-    </head>
-    <body>
-        <div class="jumbotron text-center">
-            <h1>Gerenciamento de Peças</h1>
-            <p>Senac Automotivo Ltda</p> 
-        </div>
 
-        <div class="container-fluid">
             <div class="row col-xs-12 col-sm-12 col-md-12 col-lg-12"  align="center">
                 <div class="col-md-offset-1 col-md-10">
 
@@ -105,8 +90,7 @@
                     </table>
                 </div>
             </div>
-            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
             <script>
                         function filtro() {
                             var input, filter, table, tr, td, i;
@@ -127,5 +111,3 @@
                             
                         }
             </script>
-    </body>
-</html>
