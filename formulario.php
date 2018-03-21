@@ -31,7 +31,7 @@
                             <label for="id_quantidade">Quantidade da Peça</label>
                             <input type="number" step="1" min="0" max="999" class="form-control" id="id_quantidade" name="quantidade" placeholder="Quantidade da Peça">
                         </div>
-                        <button type="submit" class="btn btn-default">enviar</button>
+                        <button type="submit" formaction="cadastrar.php" formmethod="post" class="btn btn-default">enviar</button>
                     </form>
                     </fieldset>
                 </div>

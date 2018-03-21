@@ -1,3 +1,7 @@
+<?php
+    include_once './crud.php';
+?>
+
         <style>
             * {
                 box-sizing: border-box;
@@ -54,39 +58,24 @@
                             <th style="width:40%;">Editar</th>
                             <th style="width:40%;">Excluir</th>
                         </tr>
+                        
+                        <?php
+                            foreach (listar() as $produtos => $produto) :
+                        ?>
+                        
                         <tr>
-                            <td>001</td>
-                            <td>Rolamento da Roda</td>
-                            <td>30208 J2/Q</td>
-                            <td>2008</td>
-                            <td>SKF</td>
-                            <td>36,27</td>
-                            <td>1</td>
+                            <td><?= $produto['codigo']?></td>
+                            <td><?= $produto['nome']?></td>
+                            <td><?= $produto['modelo']?></td>
+                            <td><?= $produto['ano']?></td>
+                            <td><?= $produto['fabricante']?></td>
+                            <td><?= $produto['preco']?></td>
+                            <td><?= $produto['quantidade']?></td>
                             <td><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></td>
                             <td><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></td>
                         </tr>
-                        <tr>
-                            <td>002</td>
-                            <td>Amortecedor Traseiro</td>
-                            <td>HG 31128</td>
-                            <td>2016</td>
-                            <td>Nakata</td>
-                            <td>139,50</td>
-                            <td>5</td>
-                            <td><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></td>
-                            <td><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></td>
-                        </tr>
-                        <tr>
-                            <td>003</td>
-                            <td>Coxim do Amortecedor Dianteiro</td>
-                            <td>022.0776</td>
-                            <td>2006</td>
-                            <td>Monroe Axios</td>
-                            <td>77,00</td>
-                            <td>10</td>
-                            <td><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></td>
-                            <td><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></td>
-                        </tr>
+                        
+                        <?php endforeach; ?>
                     </table>
                 </div>
             </div>
