@@ -6,10 +6,6 @@ if (!isset($_SESSION['logado'])) {
     header("Location: login.php");
     die();
 }
-
-$email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL);
-
-$contato = getContatoEmail($email);
 ?>
 <!doctype html>
 <html lang="pt-br">
@@ -30,14 +26,16 @@ $contato = getContatoEmail($email);
                 <p align="center"><a href="deslogar.php">Deslogar</a>
             </td>
             <div class="row">
-                <div class="col-8 offset-2">
+                <div class="col-6 offset-3">
                     <fieldset>
-                        <legend>Detalhes do Contato</legend>
-                        <div class="jumbotron">
-                            <p><strong>Nome:</strong> <?= $contato['contact_name'] ?></p>
-                            <p><strong>E-mail:</strong> <?= $contato['contact_email'] ?></p>
-                            <p><strong>Mensagem:</strong><br> <?= $contato['contact_message'] ?></p>
-                        </div>
+                        <legend>Localizar contato</legend>
+                        <form action="detail_contato.php" method="post">
+                            <div class="form-group col-6">
+                                <label for="id_mail">E-mail</label>
+                                <input id="id_mail" name="email" class="form-control" placeholder="Informe o email" required>
+                            </div>
+                            <button type="submit" class="btn btn-warning">Buscar</button>
+                        </form>
                     </fieldset>
                 </div>
             </div>
