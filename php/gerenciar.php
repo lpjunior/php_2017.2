@@ -119,7 +119,7 @@ if (!isset($_SESSION['logado'])) {
                 border-radius: 6px;
 
             }
-            
+
             .itemLinks {
 
                 color: #425bb8;
@@ -189,6 +189,7 @@ if (!isset($_SESSION['logado'])) {
                 <tr>
                     <td>
                         <h1 align="center">Bem Vindo <?= $usuario['nome'] ?></h1>
+                        <p align="center"><a href="#" data-target="#modalSenha" data-toggle="modal">Alterar Senha</a>
                         <p align="center"><a href="deslogar.php">Deslogar</a>
                     </td>
                 <div class="row">
@@ -258,6 +259,37 @@ if (!isset($_SESSION['logado'])) {
                 </div>     
                 </tr>
             </table>
+        </div>
+
+        <div class="modal" tabindex="-1" role="dialog" id="modalSenha">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Alterar Senha</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <fieldset>
+                            <form id="formSenha" method="post" action="alterarSenha.php">
+                                <div class="form-group">
+                                    <label for="newPass">Nova Senha</label>
+                                    <input type="password" name="senhanova" id="newPass" class="form-contol" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="oldPass">Senha Atual</label>
+                                    <input type="password" name="senhavelha" id="oldPass" class="form-contol" required>
+                                </div>
+                            </form>
+                        </fieldset>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" form="formSenha" class="btn btn-primary">Alterar</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
         </div>
 
         <!-- Optional JavaScript -->
