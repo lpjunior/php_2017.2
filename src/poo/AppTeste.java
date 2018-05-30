@@ -22,9 +22,9 @@ public class AppTeste {
 
 		Pessoa p = new Pessoa();
 
-		p.nome = "Claudemir";
-		p.sexo = "Masculino";
-		p.corDaPele = "Negro";
-		p.titulo = "Batman";
+		p.setNome("Claudemir");
+		p.setSexo("Masculino");
+		p.setCorDaPele("Negro");
+		p.setTitulo("Batman");
 	}
 }
