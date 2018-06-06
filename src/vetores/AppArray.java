@@ -25,7 +25,6 @@ public class AppArray {
 			System.out.println(lista[i]);
 		}
 		
-		
 		// definindo o tamanho do vetor na condicional dinamico
 		for(int i = 0; i < lista.length; i++) {
 			System.out.println(lista[i]);
