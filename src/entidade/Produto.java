@@ -51,7 +51,6 @@ public class Produto implements Serializable {
 	}
 
 	// sobrescrita
-	
 	@Override
 	public String toString() {
 		return id + ", " + nome + ", " + quantidade;

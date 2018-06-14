@@ -29,11 +29,67 @@ public class ProdutoDAO extends DAO {
 			stmt.setString(1, p.getNome());
 			stmt.setInt(2, p.getQuantidade());
 			
+			//stmt.execute();
 			int flag = stmt.executeUpdate();
+			/* stmt.executeUpdate() - dispara a instrução
+			 * para o banco e retornar um valor (0 ou 1) 
+			 * informando se executou com sucesso. 
+			 * Aonde 1 é o retorno de sucesso e 
+			 * 0 é o retorno de falha.
+			 * */ 
 			
 			if(flag == 0) 
 				throw new SQLException("Erro ao gravar no banco"); 
 				
+		} finally { 
+			/* 
+			 * (==) - igualdade
+			 * (!=) - diferença
+			 */
+			if(conn != null)
+				conn.close();
+			if(stmt != null)
+				stmt.close();
+		}
+	}
+	
+	public void excluir(long id) throws SQLException {
+		PreparedStatement stmt = null;
+		
+		try {
+			stmt = conn.prepareStatement("delete from produto where id = ?");
+			
+			stmt.setLong(1, id);
+			
+			int flag = stmt.executeUpdate();
+			
+			if(flag == 0)
+				throw new SQLException("Houve um erro ao excluir o registro do banco.");
+			
+		} finally {
+			if(conn != null)
+				conn.close();
+			if(stmt != null)
+				stmt.close();
+		}
+	}
+	
+	public void atualizar(Produto p) throws SQLException {
+		PreparedStatement stmt = null;
+		
+		try {
+			
+			stmt = conn.prepareStatement("update produto set nome = ?, quantidade = ? where id =?");
+			
+			stmt.setString(1, p.getNome());
+			stmt.setInt(2, p.getQuantidade());
+			stmt.setLong(3, p.getId());
+			
+			int flag = stmt.executeUpdate();
+			
+			if(flag == 0)
+				throw new SQLException("Erro ao atualizar o produto no banco.");
+			
 		} finally {
 			if(conn != null)
 				conn.close();
@@ -55,6 +111,5 @@ public class ProdutoDAO extends DAO {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		
 	}
 }
