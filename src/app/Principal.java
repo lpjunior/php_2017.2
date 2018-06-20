@@ -9,17 +9,34 @@ import entidade.Produto;
 import persistencia.ProdutoDAO;
 
 public class Principal {
+	
+	private static ProdutoDAO dao;
+	
+	public Principal() {
+		dao = new ProdutoDAO();
+	}
+	
+	
 	public static void main(String[] args) {
-
+		
+		// try expressivo - auto finaliza o scanner
 		try (Scanner scan = new Scanner(System.in)) {
-			String opcao = "";
+			int opcao;
 
 			Produto produto = new Produto();
+
+			System.out.print("Informe a opção desejada"
+					+ "\n"
+					+ "1 - salvar\n"
+					+ "2 - atualizar\n"
+					+ "3 - localizar\n"
+					+ "4 - listar\n"
+					+ "5 - excluir\n"
+					+ "Opção: ");
+			opcao = new Integer(scan.nextLine());
 			
-			System.out.print("Informe a opção desejada\n(salvar | atualizar | localizar | listar | excluir):");
-			opcao = scan.nextLine();
 			switch (opcao) {
-			case "salvar":
+			case 1:
 				System.out.print("Informe o nome: ");
 				produto.setNome(scan.nextLine());
 
@@ -29,7 +46,7 @@ public class Principal {
 				gravar(produto);
 				break;
 				
-			case "atualizar":
+			case 2:
 				System.out.print("Informe o nome: ");
 				produto.setNome(scan.nextLine());
 
@@ -44,7 +61,7 @@ public class Principal {
 				atualizar(produto);
 				break;
 				
-			case "localizar":
+			case 3:
 				System.out.print("Informe o nome: ");
 				produto.setNome(scan.nextLine());
 
@@ -52,13 +69,13 @@ public class Principal {
 				
 				break;
 
-			case "listar":
+			case 4:
 				for (Produto p : listar()) {
 					System.out.println(p);
 				}
 				break;
 				
-			case "excluir":
+			case 5:
 				System.out.print("Informe o nome do produto: ");
 				produto = localizar(scan.nextLine());
 				
@@ -66,13 +83,14 @@ public class Principal {
 				break;
 
 			default:
+				System.out.println("Opção inválida");
 				break;
 			}
 		}
 	}
 
 	public static void gravar(Produto produto) {
-		ProdutoDAO dao = new ProdutoDAO();
+		
 
 		try {
 			dao.salvar(produto);
@@ -83,7 +101,6 @@ public class Principal {
 	}
 	
 	public static void atualizar(Produto produto) {
-		ProdutoDAO dao = new ProdutoDAO();
 
 		try {
 			dao.atualizar(produto);
@@ -94,7 +111,6 @@ public class Principal {
 	}
 	
 	public static Produto localizar(String nome) {
-		ProdutoDAO dao = new ProdutoDAO();
 
 		try {
 			return dao.buscar(nome);
@@ -106,7 +122,6 @@ public class Principal {
 	}
 	
 	public static List<Produto> listar() {
-		ProdutoDAO dao = new ProdutoDAO();
 
 		try {
 			return dao.listar();
@@ -117,7 +132,6 @@ public class Principal {
 	}
 	
 	public static void excluir(long id) {
-		ProdutoDAO dao = new ProdutoDAO();
 
 		try {
 			dao.excluir(id);

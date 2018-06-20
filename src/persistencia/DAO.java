@@ -5,7 +5,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 // D.A.O - Data Access Object 
-public class DAO {
+public abstract class DAO {
 
 	public DAO() {
 		try {
@@ -21,7 +21,7 @@ public class DAO {
 		return conn;
 	}
 	
-	public static void main(String[] args) {
+	/*public static void main(String[] args) {
 		DAO dao = new DAO();
 		try {
 			dao.abreConexao();
@@ -30,5 +30,5 @@ public class DAO {
 			e.printStackTrace();
 			System.out.println("Erro ao abrir a conexão");
 		}
-	}
+	}*/
 }

@@ -20,6 +20,7 @@ public class ProdutoDAO extends DAO {
 			conn = abreConexao();
 		} catch (SQLException e) {
 			e.printStackTrace();
+			System.out.println("Erro ao abri a conexão no " + getClass().getName() + "\nO erro ocorrido foi: " + e.getMessage());
 		}
 	}
 
@@ -41,11 +42,12 @@ public class ProdutoDAO extends DAO {
 			 */
 
 			if (flag == 0)
-				throw new SQLException("Erro ao gravar no banco");
+				throw new SQLException("Erro ao gravar o produto no banco");
 
 		} finally {
 			/*
-			 * (==) - igualdade (!=) - diferença
+			 * (==) - igualdade 
+			 * (!=) - diferença
 			 */
 			if (conn != null)
 				conn.close();
@@ -65,7 +67,7 @@ public class ProdutoDAO extends DAO {
 			int flag = stmt.executeUpdate();
 
 			if (flag == 0)
-				throw new SQLException("Houve um erro ao excluir o registro do banco.");
+				throw new SQLException("Houve um erro ao excluir o registro de produto no banco.");
 
 		} finally {
 			if (conn != null)
@@ -108,7 +110,7 @@ public class ProdutoDAO extends DAO {
 			stmt = conn.prepareStatement("select * from produto where nome like ?");
 
 			stmt.setString(1, '%' + nome + '%');
-
+			
 			rs = stmt.executeQuery();
 			Produto produto = null;
 			if (rs.next()) {
@@ -157,5 +159,9 @@ public class ProdutoDAO extends DAO {
 		produto.setQuantidade(rs.getInt(3));
 
 		return produto;
+		
+		/*
+		 * return new Produto(rs.getInt(1), rs.getString(2), rs.getInt(3));
+		 * */
 	}
 }
