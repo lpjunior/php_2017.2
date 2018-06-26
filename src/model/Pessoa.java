@@ -8,41 +8,28 @@ public abstract class Pessoa implements Serializable {
 	private long id;
 	private String nome;
 	private String cpf;
-	private String telefone;
-	private String logradouro;
-	private String bairro;
-	private String cidade;
-	private String estado;
-	private String cep;
-	
-	// construtores -> ctrl + espaço (somente para o sem argumentos) OU alt + shift + S + O e desmarca todos os atributos
+	private Telefone telefone = new Telefone();
+	private Endereco endereco;
+
+	// construtores -> ctrl + espaço (somente para o sem argumentos) OU alt + shift
+	// + S + O e desmarca todos os atributos
 	public Pessoa() {
 
 	}
 
-	public Pessoa(String nome, String cpf, String telefone, String logradouro, String bairro, String cidade,
-			String estado, String cep) {
+	public Pessoa(String nome, String cpf, String telefone, Endereco endereco) {
 		this.nome = nome;
 		this.cpf = cpf;
-		this.telefone = telefone;
-		this.logradouro = logradouro;
-		this.bairro = bairro;
-		this.cidade = cidade;
-		this.estado = estado;
-		this.cep = cep;
+		setTelefone(telefone);
+		this.endereco = endereco;
 	}
 
-	public Pessoa(long id, String nome, String cpf, String telefone, String logradouro, String bairro, String cidade,
-			String estado, String cep) {
+	public Pessoa(long id, String nome, String cpf, String telefone, Endereco endereco) {
 		this.id = id;
 		this.nome = nome;
 		this.cpf = cpf;
-		this.telefone = telefone;
-		this.logradouro = logradouro;
-		this.bairro = bairro;
-		this.cidade = cidade;
-		this.estado = estado;
-		this.cep = cep;
+		setTelefone(telefone);
+		this.endereco = endereco;
 	}
 
 	// gets e sets --> alt + shift + S + R
@@ -71,51 +58,19 @@ public abstract class Pessoa implements Serializable {
 	}
 
 	public String getTelefone() {
-		return telefone;
+		return telefone.getTelefone();
 	}
 
 	public void setTelefone(String telefone) {
-		this.telefone = telefone;
+		this.telefone.setTelefone(telefone);
+	}
+	
+	public Endereco getEndereco() {
+		return endereco;
 	}
 
-	public String getLogradouro() {
-		return logradouro;
-	}
-
-	public void setLogradouro(String logradouro) {
-		this.logradouro = logradouro;
-	}
-
-	public String getBairro() {
-		return bairro;
-	}
-
-	public void setBairro(String bairro) {
-		this.bairro = bairro;
-	}
-
-	public String getCidade() {
-		return cidade;
-	}
-
-	public void setCidade(String cidade) {
-		this.cidade = cidade;
-	}
-
-	public String getEstado() {
-		return estado;
-	}
-
-	public void setEstado(String estado) {
-		this.estado = estado;
-	}
-
-	public String getCep() {
-		return cep;
-	}
-
-	public void setCep(String cep) {
-		this.cep = cep;
+	public void setEndereco(Endereco endereco) {
+		this.endereco = endereco;
 	}
 
 	// hashCode() e equals() -> alt + shift + S + H
@@ -150,8 +105,6 @@ public abstract class Pessoa implements Serializable {
 	// toString() -> alt + shift + S + S
 	@Override
 	public String toString() {
-		return "Pessoa [id=" + id + ", nome=" + nome + ", cpf=" + cpf + ", telefone=" + telefone + ", logradouro="
-				+ logradouro + ", bairro=" + bairro + ", cidade=" + cidade + ", estado=" + estado + ", cep=" + cep
-				+ "]";
+		return "Pessoa [id=" + id + ", nome=" + nome + ", cpf=" + cpf + ", telefone=" + telefone.getTelefone() + "]";
 	}
 }

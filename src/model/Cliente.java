@@ -15,14 +15,14 @@ public class Cliente extends Pessoa {
 
 	public Cliente(String nome, String cpf, String telefone, String logradouro, String bairro, String cidade,
 			String estado, String cep, String formaDePagamento, List<String> categorias) {
-		super(nome, cpf, telefone, logradouro, bairro, cidade, estado, cep);
+		super(nome, cpf, telefone, new Endereco(logradouro, bairro, cidade, estado, cep));
 		this.formaDePagamento = formaDePagamento;
 		this.categorias = categorias;
 	}
 
 	public Cliente(long id, String nome, String cpf, String telefone, String logradouro, String bairro, String cidade,
 			String estado, String cep, String formaDePagamento, List<String> categorias) {
-		super(id, nome, cpf, telefone, logradouro, bairro, cidade, estado, cep);
+		super(id, nome, cpf, telefone, new Endereco(logradouro, bairro, cidade, estado, cep));
 		this.formaDePagamento = formaDePagamento;
 		this.categorias = categorias;
 	}
