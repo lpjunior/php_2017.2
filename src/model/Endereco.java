@@ -81,4 +81,11 @@ public class Endereco implements Serializable {
 	public void setCep(String cep) {
 		this.cep = cep;
 	}
+
+	@Override
+	public String toString() {
+		return "\nEndereco [id=" + id + ", logradouro=" + logradouro + ", bairro=" + bairro + ", cidade=" + cidade
+				+ ", estado=" + estado + ", cep=" + cep + "]";
+	}
+	
 }

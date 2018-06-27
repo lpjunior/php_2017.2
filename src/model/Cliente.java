@@ -13,9 +13,8 @@ public class Cliente extends Pessoa {
 		super();
 	}
 
-	public Cliente(String nome, String cpf, String telefone, String logradouro, String bairro, String cidade,
-			String estado, String cep, String formaDePagamento, List<String> categorias) {
-		super(nome, cpf, telefone, new Endereco(logradouro, bairro, cidade, estado, cep));
+	public Cliente(String nome, String cpf, String telefone, Endereco endereco, String formaDePagamento, List<String> categorias) {
+		super(nome, cpf, telefone, endereco);
 		this.formaDePagamento = formaDePagamento;
 		this.categorias = categorias;
 	}

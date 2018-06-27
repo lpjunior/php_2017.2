@@ -10,7 +10,7 @@ public abstract class Pessoa implements Serializable {
 	private String cpf;
 	private Telefone telefone = new Telefone();
 	private Endereco endereco;
-
+	
 	// construtores -> ctrl + espaço (somente para o sem argumentos) OU alt + shift
 	// + S + O e desmarca todos os atributos
 	public Pessoa() {
@@ -105,6 +105,6 @@ public abstract class Pessoa implements Serializable {
 	// toString() -> alt + shift + S + S
 	@Override
 	public String toString() {
-		return "Pessoa [id=" + id + ", nome=" + nome + ", cpf=" + cpf + ", telefone=" + telefone.getTelefone() + "]";
+		return "Pessoa [id=" + id + ", nome=" + nome + ", cpf=" + cpf + ", telefone=" + telefone.getTelefone() + "]" + endereco;
 	}
 }
